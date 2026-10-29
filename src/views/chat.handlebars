@@ -1,0 +1,48 @@
+<section class="chat-pagina">
+  <div class="publicidad">
+    <span class="publicidad__tag">Publicidad</span>
+    <strong>{{publicidad.titulo}}</strong>
+    <span>{{publicidad.texto}}</span>
+  </div>
+
+  <div class="chat" id="chat" data-username="{{username}}">
+    <header class="chat__cabecera">
+      <div class="usuario">
+        <span class="avatar">{{inicial username}}</span>
+        <div>
+          <span class="usuario__label">Username</span>
+          <strong>{{username}}</strong>
+        </div>
+      </div>
+      <div class="chat__en-linea">
+        <span class="punto-verde"></span>
+        <span id="contadorUsuarios">1</span>&nbsp;en línea
+      </div>
+      <a href="/" class="btn btn--fantasma btn--chico">Salir</a>
+    </header>
+
+    <div class="chat__mensajes" id="mensajes">
+      {{#each mensajes}}
+        <div class="mensaje {{#if (eq nombre ../username)}}mensaje--propio{{/if}}">
+          <span class="avatar avatar--chico">{{inicial nombre}}</span>
+          <div class="mensaje__burbuja">
+            <div class="mensaje__meta"><strong>{{nombre}}</strong><span>{{hora}}</span></div>
+            <p>{{mensaje}}</p>
+          </div>
+        </div>
+      {{else}}
+        <div class="chat__vacio" id="chatVacio">Aún no hay mensajes. ¡Sé el primero en escribir! 👋</div>
+      {{/each}}
+    </div>
+    <div class="chat__escribiendo" id="escribiendo"></div>
+
+    <form class="chat__formulario" id="formMensaje" autocomplete="off">
+      <label for="inputMensaje">Mensaje:</label>
+      <input type="text" id="inputMensaje" maxlength="500" placeholder="Ingrese el mensaje..." required>
+      <button type="submit" class="btn btn--primario">Enviar ➤</button>
+    </form>
+  </div>
+</section>
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="/js/chat.js"></script>

@@ -1,0 +1,19 @@
+{
+  "name": "chat-grupal",
+  "version": "1.0.0",
+  "description": "Chat grupal en tiempo real con Express, Handlebars y Socket.IO",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "node --watch src/index.js"
+  },
+  "keywords": [],
+  "author": "Andres Osorio",
+  "license": "ISC",
+  "type": "module",
+  "dependencies": {
+    "express": "^5.3.0",
+    "express-handlebars": "^8.0.3",
+    "socket.io": "^4.8.4"
+  }
+}

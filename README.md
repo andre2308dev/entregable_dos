@@ -1,6 +1,6 @@
-# Tienda – CRUD de productos + Chat grupal
+# Chat Grupal
 
-Express + Handlebars (motor de plantillas) + Socket.IO.
+Chat grupal en tiempo real con Express + Handlebars (motor de plantillas) + Socket.IO.
 
 ## Cómo ejecutar
 
@@ -11,18 +11,11 @@ npm start        # o: npm run dev (se reinicia al guardar)
 
 Abrir http://localhost:8080
 
-## Rutas
+## Funcionamiento
 
-| Método | Ruta                       | Acción CRUD                  |
-|--------|----------------------------|------------------------------|
-| GET    | `/productos`               | Mostrar (con búsqueda/filtro)|
-| GET    | `/productos/:id`           | Leer un producto             |
-| GET    | `/productos/nuevo`         | Formulario para crear        |
-| POST   | `/productos`               | Crear                        |
-| GET    | `/productos/:id/editar`    | Formulario para modificar    |
-| POST   | `/productos/:id/editar`    | Modificar                    |
-| POST   | `/productos/:id/eliminar`  | Eliminar                     |
-| GET    | `/chat`                    | Formulario de username / chat grupal |
+1. En `/` se ingresa el **username**.
+2. En `/chat` se muestra la publicidad, el username y la caja de mensajes.
+3. Cada mensaje guarda **nombre, mensaje y hora** y se envía a todos los conectados en tiempo real.
 
 ## Estructura
 
@@ -30,15 +23,12 @@ Abrir http://localhost:8080
 src/
 ├── index.js                 Servidor Express + Handlebars + Socket.IO
 ├── utils.js                 _dirname
-├── routes/productos.router.js
 ├── managers/
-│   ├── GestorProductos.js   CRUD sobre data/productos.json
 │   └── GestorMensajes.js    Mensajes del chat (nombre, mensaje, hora)
-├── data/                    productos.json, mensajes.json
+├── data/mensajes.json       Historial del chat
 ├── views/                   Plantillas (layouts, partials, vistas)
 └── public/                  css/ y js/ del navegador
 ```
 
 Cada `res.render()` recibe todas las variables que usa su plantilla
-(título, productos, categorías, mensajes, username, publicidad, etc.).
-# Tarea1
+(title, username, mensajes, publicidad).
